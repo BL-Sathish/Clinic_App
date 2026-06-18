@@ -48,7 +48,7 @@ public class AdminMenu {
         System.out.println("\n--- Bulk Data Entry ---");
         String fileName = ScannerHelper.readString("Enter the CSV file name with path: ");
         try {
-            List<Doctor> newDoctors = FileHandler.readDoctorsFromFile(fileName, idCounter);
+            List<Doctor> newDoctors = FileHandler.readDoctorsFromFile(fileName, idCounter, doctorList);
             doctorList.addAll(newDoctors);
             idCounter += newDoctors.size();
             System.out.println(newDoctors.size() + " doctors imported successfully!");
