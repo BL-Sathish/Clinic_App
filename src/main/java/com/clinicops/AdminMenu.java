@@ -17,7 +17,7 @@ public class AdminMenu {
                     registerDoctors();
                     break;
                 case 2:
-                    System.out.println("Logic for Bulk Data Entry will be added here.");
+                    bulkDataEntry();
                     break;
                 case 3:
                     System.out.println("Logic for View Audit Logs will be added here.");
@@ -42,6 +42,19 @@ public class AdminMenu {
         System.out.println("3. View Audit Logs");
         System.out.println("4. Display Doctor's List");
         System.out.println("5. Logout");
+    }
+
+    private void bulkDataEntry() {
+        System.out.println("\n--- Bulk Data Entry ---");
+        String fileName = ScannerHelper.readString("Enter the CSV file name with path: ");
+        try {
+            List<Doctor> newDoctors = FileHandler.readDoctorsFromFile(fileName, idCounter);
+            doctorList.addAll(newDoctors);
+            idCounter += newDoctors.size();
+            System.out.println(newDoctors.size() + " doctors imported successfully!");
+        } catch (Exception e) {
+            System.out.println("Failed to import doctors: " + e.getMessage());
+        }
     }
 
     private void registerDoctors() {
