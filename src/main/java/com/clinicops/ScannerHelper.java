@@ -42,4 +42,17 @@ public class ScannerHelper {
             System.out.println("Invalid choice. Please try again.");
         }
     }
+
+    public static String readMobileNumber(String prompt) {
+        // Indian mobile number validation regex: Starts with 6, 7, 8, or 9 and exactly 10 digits.
+        String regex = "^[6-9]\\d{9}$";
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine().trim();
+            if (input.matches(regex)) {
+                return input;
+            }
+            System.out.println("Invalid mobile number. Must be 10 digits starting with 6, 7, 8, or 9. Please try again.");
+        }
+    }
 }
