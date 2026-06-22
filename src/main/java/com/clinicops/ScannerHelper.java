@@ -55,4 +55,24 @@ public class ScannerHelper {
             System.out.println("Invalid mobile number. Must be 10 digits starting with 6, 7, 8, or 9. Please try again.");
         }
     }
+
+    public static String readSlotChoice() {
+        String[] slots = {
+            "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM",
+            "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM",
+            "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM",
+            "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"
+        };
+        while (true) {
+            System.out.println("\nAvailable Slots:");
+            for (int i = 0; i < slots.length; i++) {
+                System.out.println((i + 1) + ". " + slots[i]);
+            }
+            int choice = readInt("Select a slot (1-" + slots.length + "): ");
+            if (choice >= 1 && choice <= slots.length) {
+                return slots[choice - 1];
+            }
+            System.out.println("Invalid slot choice. Please try again.");
+        }
+    }
 }

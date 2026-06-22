@@ -7,6 +7,10 @@ public class AdminMenu {
     private static final List<Doctor> doctorList = new ArrayList<>();
     private static int idCounter = 1;
 
+    public static List<Doctor> getDoctorList() {
+        return doctorList;
+    }
+
     public void displayMenu() {
         boolean logout = false;
         while (!logout) {
