@@ -59,6 +59,7 @@ public class AdminMenu {
             AuditLogger.log("Bulk import successful: " + newDoctors.size() + " doctors added.", "INFO");
         } catch (Exception e) {
             System.out.println("Failed to import doctors: " + e.getMessage());
+            AuditLogger.log("Bulk import failed: " + e.getMessage(), "ERROR");
         }
     }
 
