@@ -75,4 +75,12 @@ public class ScannerHelper {
             System.out.println("Invalid slot choice. Please try again.");
         }
     }
+
+    public static boolean isSlotInShift(String slot, Shift shift) {
+        if (shift == Shift.BOTH) return true;
+        boolean isMorningSlot = slot.endsWith("AM") || slot.startsWith("12:");
+        if (shift == Shift.MORNING && isMorningSlot) return true;
+        if (shift == Shift.EVENING && !isMorningSlot) return true;
+        return false;
+    }
 }
