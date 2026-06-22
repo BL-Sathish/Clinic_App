@@ -6,7 +6,8 @@ public class ClinicApp {
     private static final int ROLE_EXIT = 3;
 
     public static void main(String[] args) {
-        System.out.println("Welcome to TownClinic!");
+        System.out.println("Welcome to ClinicOps App!");
+        DatabaseManager.initializeDatabase();
         AdminMenu adminMenu = new AdminMenu();
         FrontDeskMenu frontDeskMenu = new FrontDeskMenu();
 
@@ -27,6 +28,8 @@ public class ClinicApp {
                     frontDeskMenu.displayMenu();
                     break;
                 case ROLE_EXIT:
+                    System.out.println("Saving records to database...");
+                    DatabaseManager.saveDoctors(AdminMenu.getDoctorList());
                     System.out.println("Exiting application. Goodbye!");
                     exitSystem = true;
                     break;
