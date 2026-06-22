@@ -56,6 +56,7 @@ public class AdminMenu {
             doctorList.addAll(newDoctors);
             idCounter += newDoctors.size();
             System.out.println(newDoctors.size() + " doctors imported successfully!");
+            AuditLogger.log("Bulk import successful: " + newDoctors.size() + " doctors added.", "INFO");
         } catch (Exception e) {
             System.out.println("Failed to import doctors: " + e.getMessage());
         }
@@ -75,6 +76,7 @@ public class AdminMenu {
             doctorList.add(newDoctor);
 
             System.out.println("Doctor registered successfully with ID: " + generatedId);
+            AuditLogger.log("Doctor registered: " + name + " [" + generatedId + "]", "INFO");
 
             String choice = ScannerHelper.readString("Do you want to add another doctor? (y/n): ");
             if (!choice.equalsIgnoreCase("y")) {
