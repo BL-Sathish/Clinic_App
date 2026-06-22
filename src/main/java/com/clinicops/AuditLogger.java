@@ -1,28 +1,52 @@
 package com.clinicops;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class AuditLogger {
-    private static final List<String> logs = new ArrayList<>();
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private static final Logger logger = LogManager.getLogger(AuditLogger.class);
+    private static final String LOG_FILE = "clinicops.log";
 
     public static void log(String message, String level) {
-        String timestamp = LocalDateTime.now().format(formatter);
-        String logEntry = String.format("[%s] [%s] %s", timestamp, level.toUpperCase(), message);
-        logs.add(logEntry);
+        switch (level.toUpperCase()) {
+            case "INFO":
+                logger.info(message);
+                break;
+            case "WARNING":
+                logger.warn(message);
+                break;
+            case "ERROR":
+                logger.error(message);
+                break;
+            default:
+                logger.debug(message);
+                break;
+        }
     }
 
     public static void displayLogs() {
         System.out.println("\n--- Audit Logs ---");
-        if (logs.isEmpty()) {
-            System.out.println("No logs available.");
-            return;
-        }
-        for (String log : logs) {
-            System.out.println(log);
+        try {
+            Path logPath = Paths.get(LOG_FILE);
+            if (Files.exists(logPath)) {
+                List<String> lines = Files.readAllLines(logPath);
+                if (lines.isEmpty()) {
+                    System.out.println("No logs available.");
+                } else {
+                    for (String line : lines) {
+                        System.out.println(line);
+                    }
+                }
+            } else {
+                System.out.println("No logs available yet.");
+            }
+        } catch (Exception e) {
+            System.out.println("Could not read log file: " + e.getMessage());
         }
     }
 }
