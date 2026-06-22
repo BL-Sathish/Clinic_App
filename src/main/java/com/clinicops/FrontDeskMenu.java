@@ -55,6 +55,13 @@ public class FrontDeskMenu {
         int age = ScannerHelper.readInt("Age: ");
         String mobileNumber = ScannerHelper.readMobileNumber("Mobile Number: ");
 
+        for (Patient p : patientList) {
+            if (p.getMobileNumber().equals(mobileNumber)) {
+                System.out.println("Patient is already registered with mobile number: " + mobileNumber);
+                return;
+            }
+        }
+
         String generatedId = String.format("P%04d", patientIdCounter++);
         Patient newPatient = new Patient(generatedId, name, gender, age, mobileNumber);
         patientList.add(newPatient);
