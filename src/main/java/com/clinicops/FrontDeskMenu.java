@@ -71,6 +71,7 @@ public class FrontDeskMenu {
         patientList.add(newPatient);
 
         System.out.println("Patient registered successfully with ID: " + generatedId);
+        AuditLogger.log("Patient registered: " + name + " [" + generatedId + "]", "INFO");
     }
 
     private void bookAppointment() {
@@ -121,6 +122,7 @@ public class FrontDeskMenu {
 
         System.out.println("Appointment booked successfully!");
         System.out.println(appointment);
+        AuditLogger.log("Appointment booked: " + patient.getName() + " with Dr. " + assignedDoctor.getName() + " at " + slot + " [" + apptId + "]", "INFO");
     }
 
     private void viewAppointments() {

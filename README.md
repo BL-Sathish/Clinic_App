@@ -1,3 +1,3 @@
-# feature/uc12-logging-infrastructure
+# feature/uc13-functional-logging
 
-This branch implements the specific use case feature/uc12-logging-infrastructure for the ClinicOps project.
+This branch implements the specific use case feature/uc13-functional-logging for the ClinicOps project.
