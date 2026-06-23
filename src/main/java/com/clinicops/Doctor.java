@@ -3,11 +3,11 @@ package com.clinicops;
 public class Doctor {
     private String id;
     private String name;
-    private String specialization;
+    private Specialization specialization;
     private int experience;
-    private String shift;
+    private Shift shift;
 
-    public Doctor(String id, String name, String specialization, int experience, String shift) {
+    public Doctor(String id, String name, Specialization specialization, int experience, Shift shift) {
         this.id = id;
         this.name = name;
         this.specialization = specialization;
@@ -23,7 +23,7 @@ public class Doctor {
         return name;
     }
 
-    public String getSpecialization() {
+    public Specialization getSpecialization() {
         return specialization;
     }
 
@@ -31,13 +31,13 @@ public class Doctor {
         return experience;
     }
 
-    public String getShift() {
+    public Shift getShift() {
         return shift;
     }
 
     @Override
     public String toString() {
         return String.format("ID: %s | Name: %s | Specialization: %s | Experience: %d years | Shift: %s",
-                id, name, specialization, experience, shift);
+                id, name, specialization.getDisplayName(), experience, shift.getDisplayName());
     }
 }

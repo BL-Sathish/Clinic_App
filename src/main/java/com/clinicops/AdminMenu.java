@@ -49,9 +49,9 @@ public class AdminMenu {
         while (addMore) {
             System.out.println("\n--- Enter Doctor Details ---");
             String name = ScannerHelper.readString("Name: ");
-            String specialization = ScannerHelper.readString("Specialization: ");
+            Specialization specialization = ScannerHelper.readEnumChoice("\nAvailable Specializations:", Specialization.class);
             int experience = ScannerHelper.readInt("Experience (years): ");
-            String shift = ScannerHelper.readString("Shift (Morning/Evening/Both): ");
+            Shift shift = ScannerHelper.readEnumChoice("\nAvailable Shifts:", Shift.class);
 
             String generatedId = String.format("D%04d", idCounter++);
             Doctor newDoctor = new Doctor(generatedId, name, specialization, experience, shift);

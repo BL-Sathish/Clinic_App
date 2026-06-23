@@ -27,4 +27,19 @@ public class ScannerHelper {
             System.out.println("Input cannot be empty. Please try again.");
         }
     }
+
+    public static <T extends Enum<T>> T readEnumChoice(String prompt, Class<T> enumClass) {
+        T[] values = enumClass.getEnumConstants();
+        while (true) {
+            System.out.println(prompt);
+            for (int i = 0; i < values.length; i++) {
+                System.out.println((i + 1) + ". " + values[i].name());
+            }
+            int choice = readInt("Select option (1-" + values.length + "): ");
+            if (choice >= 1 && choice <= values.length) {
+                return values[choice - 1];
+            }
+            System.out.println("Invalid choice. Please try again.");
+        }
+    }
 }
