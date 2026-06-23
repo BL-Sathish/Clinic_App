@@ -1,3 +1,3 @@
-# feature/uc2-doctors-data
+# feature/uc3-refactoring
 
-This branch implements the specific use case feature/uc2-doctors-data for the ClinicOps project.
+This branch implements the specific use case feature/uc3-refactoring for the ClinicOps project.

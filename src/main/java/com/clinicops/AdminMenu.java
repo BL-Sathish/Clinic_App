@@ -1,23 +1,11 @@
 package com.clinicops;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdminMenu {
-    // Doctor 1
-    private static String doc1Name;
-    private static String doc1Specialization;
-    private static int doc1Experience;
-    private static String doc1Shift;
-
-    // Doctor 2
-    private static String doc2Name;
-    private static String doc2Specialization;
-    private static int doc2Experience;
-    private static String doc2Shift;
-
-    // Doctor 3
-    private static String doc3Name;
-    private static String doc3Specialization;
-    private static int doc3Experience;
-    private static String doc3Shift;
+    private static final List<Doctor> doctorList = new ArrayList<>();
+    private static int idCounter = 1;
 
     public void displayMenu() {
         boolean logout = false;
@@ -57,42 +45,35 @@ public class AdminMenu {
     }
 
     private void registerDoctors() {
-        System.out.println("\n--- Enter Doctor 1 Details ---");
-        doc1Name = ScannerHelper.readString("Name: ");
-        doc1Specialization = ScannerHelper.readString("Specialization: ");
-        doc1Experience = ScannerHelper.readInt("Experience (years): ");
-        doc1Shift = ScannerHelper.readString("Shift (Morning/Evening/Both): ");
+        boolean addMore = true;
+        while (addMore) {
+            System.out.println("\n--- Enter Doctor Details ---");
+            String name = ScannerHelper.readString("Name: ");
+            String specialization = ScannerHelper.readString("Specialization: ");
+            int experience = ScannerHelper.readInt("Experience (years): ");
+            String shift = ScannerHelper.readString("Shift (Morning/Evening/Both): ");
 
-        System.out.println("\n--- Enter Doctor 2 Details ---");
-        doc2Name = ScannerHelper.readString("Name: ");
-        doc2Specialization = ScannerHelper.readString("Specialization: ");
-        doc2Experience = ScannerHelper.readInt("Experience (years): ");
-        doc2Shift = ScannerHelper.readString("Shift (Morning/Evening/Both): ");
+            String generatedId = String.format("D%04d", idCounter++);
+            Doctor newDoctor = new Doctor(generatedId, name, specialization, experience, shift);
+            doctorList.add(newDoctor);
 
-        System.out.println("\n--- Enter Doctor 3 Details ---");
-        doc3Name = ScannerHelper.readString("Name: ");
-        doc3Specialization = ScannerHelper.readString("Specialization: ");
-        doc3Experience = ScannerHelper.readInt("Experience (years): ");
-        doc3Shift = ScannerHelper.readString("Shift (Morning/Evening/Both): ");
+            System.out.println("Doctor registered successfully with ID: " + generatedId);
 
-        System.out.println("Doctors registered successfully!");
+            String choice = ScannerHelper.readString("Do you want to add another doctor? (y/n): ");
+            if (!choice.equalsIgnoreCase("y")) {
+                addMore = false;
+            }
+        }
     }
 
     private void displayDoctors() {
         System.out.println("\n--- Registered Doctors ---");
-        if (doc1Name == null && doc2Name == null && doc3Name == null) {
+        if (doctorList.isEmpty()) {
             System.out.println("No doctors registered yet.");
-            return;
-        }
-        
-        if (doc1Name != null) {
-            System.out.println("Doctor 1: " + doc1Name + ", " + doc1Specialization + ", " + doc1Experience + " years, " + doc1Shift);
-        }
-        if (doc2Name != null) {
-            System.out.println("Doctor 2: " + doc2Name + ", " + doc2Specialization + ", " + doc2Experience + " years, " + doc2Shift);
-        }
-        if (doc3Name != null) {
-            System.out.println("Doctor 3: " + doc3Name + ", " + doc3Specialization + ", " + doc3Experience + " years, " + doc3Shift);
+        } else {
+            for (Doctor doctor : doctorList) {
+                System.out.println(doctor);
+            }
         }
     }
 }
