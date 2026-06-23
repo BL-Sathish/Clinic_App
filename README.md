@@ -1,3 +1,3 @@
-# feature/uc6-opencsv-import
+# feature/uc7-patient-registration
 
-This branch implements the specific use case feature/uc6-opencsv-import for the ClinicOps project.
+This branch implements the specific use case feature/uc7-patient-registration for the ClinicOps project.
