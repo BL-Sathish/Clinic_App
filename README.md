@@ -1,3 +1,3 @@
-# feature/uc16-jdbc-persistence
+# feature/uc17-jpa-persistence
 
-This branch implements the specific use case feature/uc16-jdbc-persistence for the ClinicOps project.
+This branch implements the specific use case feature/uc17-jpa-persistence for the ClinicOps project.
