@@ -90,6 +90,7 @@ public class FrontDeskMenu {
         }
 
         System.out.println("Booking appointment for: " + patient.getName());
+        Specialization requiredSpecialization = ScannerHelper.readEnumChoice("\nSelect required Specialization:", Specialization.class);
         String slot = ScannerHelper.readSlotChoice();
 
         List<Doctor> allDoctors = AdminMenu.getDoctorList();
@@ -100,7 +101,7 @@ public class FrontDeskMenu {
 
         List<Doctor> availableDoctors = new ArrayList<>();
         for (Doctor doctor : allDoctors) {
-            if (doctor.isSlotAvailable(slot)) {
+            if (doctor.getSpecialization() == requiredSpecialization && doctor.isSlotAvailable(slot)) {
                 availableDoctors.add(doctor);
             }
         }

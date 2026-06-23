@@ -1,3 +1,3 @@
-# feature/uc9-appointment-booking
+# feature/uc10-specialization-booking
 
-This branch implements the specific use case feature/uc9-appointment-booking for the ClinicOps project.
+This branch implements the specific use case feature/uc10-specialization-booking for the ClinicOps project.
