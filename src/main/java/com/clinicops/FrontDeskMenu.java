@@ -101,7 +101,7 @@ public class FrontDeskMenu {
 
         List<Doctor> availableDoctors = new ArrayList<>();
         for (Doctor doctor : allDoctors) {
-            if (doctor.getSpecialization() == requiredSpecialization && doctor.isSlotAvailable(slot)) {
+            if (doctor.getSpecialization() == requiredSpecialization && doctor.isSlotAvailable(slot) && ScannerHelper.isSlotInShift(slot, doctor.getShift())) {
                 availableDoctors.add(doctor);
             }
         }
