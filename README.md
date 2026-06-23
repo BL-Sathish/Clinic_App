@@ -1,3 +1,3 @@
-# feature/uc11-shift-aware-booking
+# feature/uc12-logging-infrastructure
 
-This branch implements the specific use case feature/uc11-shift-aware-booking for the ClinicOps project.
+This branch implements the specific use case feature/uc12-logging-infrastructure for the ClinicOps project.

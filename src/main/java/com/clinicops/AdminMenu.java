@@ -24,7 +24,7 @@ public class AdminMenu {
                     bulkDataEntry();
                     break;
                 case 3:
-                    System.out.println("Logic for View Audit Logs will be added here.");
+                    AuditLogger.displayLogs();
                     break;
                 case 4:
                     displayDoctors();
