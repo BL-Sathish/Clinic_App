@@ -1,3 +1,3 @@
-# feature/uc7-patient-registration
+# feature/uc8-patient-validation
 
-This branch implements the specific use case feature/uc7-patient-registration for the ClinicOps project.
+This branch implements the specific use case feature/uc8-patient-validation for the ClinicOps project.
