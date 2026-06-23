@@ -1,3 +1,3 @@
-# feature/uc14-error-logging
+# feature/uc15-log4j-migration
 
-This branch implements the specific use case feature/uc14-error-logging for the ClinicOps project.
+This branch implements the specific use case feature/uc15-log4j-migration for the ClinicOps project.
