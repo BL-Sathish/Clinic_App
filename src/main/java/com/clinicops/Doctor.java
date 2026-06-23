@@ -1,7 +1,11 @@
 package com.clinicops;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Doctor {
     private String id;
+    private List<String> bookedSlots = new ArrayList<>();
     private String name;
     private Specialization specialization;
     private int experience;
@@ -33,6 +37,14 @@ public class Doctor {
 
     public Shift getShift() {
         return shift;
+    }
+
+    public boolean isSlotAvailable(String slot) {
+        return !bookedSlots.contains(slot);
+    }
+
+    public void bookSlot(String slot) {
+        bookedSlots.add(slot);
     }
 
     @Override
