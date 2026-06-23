@@ -3,13 +3,29 @@ package com.clinicops;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "doctors")
 public class Doctor {
+    @Id
     private String id;
+    
+    @Transient
     private List<String> bookedSlots = new ArrayList<>();
+    
     private String name;
+    
+    @Enumerated(EnumType.STRING)
     private Specialization specialization;
+    
     private int experience;
+    
+    @Enumerated(EnumType.STRING)
     private Shift shift;
+
+    public Doctor() {}
+
 
     public Doctor(String id, String name, Specialization specialization, int experience, Shift shift) {
         this.id = id;
